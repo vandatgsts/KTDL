@@ -25,11 +25,12 @@ def export_to_excel():
     if apriori_results is not None:
         # Yêu cầu người dùng chọn vị trí lưu file
         filepath = filedialog.asksaveasfilename(
-            defaultextension=".xlsx",
+            defaultextension="result.xlsx",
             filetypes=[("Excel files", "*.xlsx"), ("All files", "*.*")],
         )
         if filepath:
             # Xuất DataFrame ra Excel
+            apriori_results.to_excel(filepath, index=False)
             messagebox.showinfo("Thông báo", "Xuất file Excel thành công!")
     else:
         messagebox.showwarning("Cảnh báo", "Không có kết quả để xuất!")
